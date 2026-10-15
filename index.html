@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>問題用紙 Maker</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/3.2.8/svg.min.js" integrity="sha512-RTCg7IYcfrgDIk+0xaABXSTdDL1BJ+0QWFmIJYl5b6r4GoLT6U4lFAIZVTbCDga8fTOgIhQBQ6sY+WTrgCllqA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+  使い方は<a href="torisetsu.pdf">ここ</a>をみて。
+  <textarea id="input" class="input">大問1
+(1)①@中
+②@記述2
+(2)A
+B
+(3)</textarea>
+  <button id="convert">変換</button>
+  <input type="file" accept=".txt" id="load">
+  <button id="save">ファイルにデータを保存</button>
+  <button id="download">画像を保存</button>
+  <div id="result"></div>
+  <script src="index.js"></script>
+  <script src="convert.js"></script>
+</body>
+</html>
