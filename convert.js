@@ -193,7 +193,7 @@ function convert(txt) {
             const num = Number(child.param.replace("記述", ""));
             // ①みたいな
             rect(r, [baseX + SIZES.small, baseY + y], [SIZES.inside, SIZES.height * num], child.inside, FONTSIZES.inside);
-            // 回答枠
+            // 解答枠
             rect(r, [baseX + SIZES.small + SIZES.inside, baseY + y], [getWidthFromParam(child.param), SIZES.height * num]);
             for (let i = 0; i < num - 1; i ++) {
               // 点線
@@ -215,7 +215,7 @@ function convert(txt) {
           const num = Number(q.param.replace("記述", ""));
           // (1)みたいな
           rect(r, [baseX, baseY + y], [SIZES.small, SIZES.height * num], "("+q.q+")", FONTSIZES.small);
-          // 回答枠
+          // 解答枠
           rect(r, [baseX + SIZES.small, baseY + y], [getWidthFromParam(q.param), SIZES.height * num]);
           for (let i = 0; i < num - 1; i ++) {
             // 点線

@@ -48,7 +48,7 @@ document.getElementById("save").addEventListener("click", () => {
 
   const a = document.createElement("a");
   a.href = url;
-  a.download = fileName || "回答用紙.kymk.txt";
+  a.download = fileName || "解答用紙.kymk.txt";
 
   a.click();
 
