@@ -1,4 +1,4 @@
-const ZURASHITEYO = "move!!";
+const TONARIHE = "move!!";
 const PARAM_SPLIT_REGIX = /[ー\-@＠]/
 const BORDER_COLOR = "#000";
 const FILL_COLOR = "transparent";
@@ -122,13 +122,13 @@ function convert(txt) {
 
   let lastSmall = null;
   for (const line of lines) {
-    if (line == "ずらしてよ！") {
+    if (line.match("となりへ") || line == "ずらしてよ！") {
       resetSectionIfPossible();
       currentSection = null;
       sectionList = [];
       lastSmall = null;
 
-      sections.push(ZURASHITEYO);
+      sections.push(TONARIHE);
       continue;
     }
     if (line.startsWith("大問")) {
@@ -166,7 +166,7 @@ function convert(txt) {
   secMaxX = 0;
   for (const sec of sections) {
     // console.log(sec);
-    if (sec == ZURASHITEYO) {
+    if (sec == TONARIHE) {
       maxYSum = Math.max(ySum, maxYSum);
       ySum = SIZES.border / 2;
       // console.log(secMaxX, zurashiX);

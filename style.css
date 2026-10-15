@@ -1,14 +1,171 @@
-* {
-  box-sizing: border-box;
+:root{
+	/* Primary */
+	--tengu-primary-color		: #1975ff;
+	--tengu-primary-hover-color  : #3284ff;
+	--tengu-primary-outline-color: #1975ff6f;
+	--tengu-primary-text-color   : #fff;
+
+	/* Warning */
+	--tengu-warning-color		: #ffe819;
+	--tengu-warning-hover-color  : #ffee32;
+	--tengu-warning-outline-color: #ffe8196f;
+	--tengu-warning-text-color   : #000;
+
+	/* Danger */
+	--tengu-danger-color		 : #ff1919;
+	--tengu-danger-hover-color   : #ff3232;
+	--tengu-danger-outline-color : #ff19196f;
+	--tengu-danger-text-color	: #fff;
+
+	/* Success */
+	--tengu-success-color		: #169342;
+	--tengu-success-hover-color  : #3e975d;
+	--tengu-success-outline-color: #1693426f;
+	--tengu-success-text-color   : #fff;
+
+
+	--tengu-card-border-color: #ddd;
+	--tengu-card-header-color: #f8f8f8;
+	--tengu-card-header-text-color: #333;
+
+	--tengu-switch-background: #ddd;
+	--tengu-switch-checked-background: #45c736;
+
+	--tengu-sidebar-active-color: #01bf44;
+}
+*{
+	box-sizing: border-box;
 }
 
-.input {
-  width: 100%;
-  height: 100vh;
-  border: 2px solid black;
-  border-radius: 0;
-  font-family: Arial, Helvetica, sans-serif;
+.primary{
+	--tengu-background	  : var(--tengu-primary-color);
+	--tengu-background-hover: var(--tengu-primary-hover-color);
+	--tengu-outline-color   : var(--tengu-primary-outline-color);
+	--tengu-text			: var(--tengu-primary-text-color);
 }
-.input:focus {
-  outline: 2px solid skyblue;
+.warning{
+	--tengu-background	  : var(--tengu-warning-color);
+	--tengu-background-hover: var(--tengu-warning-hover-color);
+	--tengu-outline-color   : var(--tengu-warning-outline-color);
+	--tengu-text			: var(--tengu-warning-text-color);
+}
+.danger{
+	--tengu-background	  : var(--tengu-danger-color);
+	--tengu-background-hover: var(--tengu-danger-hover-color);
+	--tengu-outline-color   : var(--tengu-danger-outline-color);
+	--tengu-text			: var(--tengu-danger-text-color);
+}
+.success{
+	--tengu-background	  : var(--tengu-success-color);
+	--tengu-background-hover: var(--tengu-success-hover-color);
+	--tengu-outline-color   : var(--tengu-success-outline-color);
+	--tengu-text			: var(--tengu-success-text-color);
+}
+
+/* BUTTON */
+.btn{
+	display: inline-block;
+	padding: 0.5rem 1rem;
+	border-radius: 5px;
+	cursor: pointer;
+
+	background: var(--tengu-background);
+	color: var(--tengu-text);
+	
+	transition: all .25s;
+
+	user-select: none;
+	outline: 3px solid transparent;
+
+	margin: 5px auto;
+}
+.btn:not(.disabled):hover{
+	background: var(--tengu-background-hover);
+}
+.btn:not(.disabled):active{
+	outline-color: var(--tengu-outline-color);
+}
+
+.btn.btn-outline{
+	background: transparent;
+	border: 2px solid var(--tengu-background);
+	color: #000;
+}
+.btn:not(.disabled).btn-outline:hover{
+	background: var(--tengu-background);
+	color: var(--tengu-text);
+}
+
+.btn:empty{
+	display: none;
+}
+.btn-block{
+	display: block;
+	text-align: center;
+}
+.btn.disabled{
+	user-select: none;
+	pointer-events: none;
+	cursor: auto;
+	filter: brightness(0.75);
+}
+
+
+/* FORM */
+
+
+input:not([type=checkbox]):not([type=radio]), select, textarea{
+	display: block;
+	width: 100%;
+	padding: 0.5rem;
+	border: 1px solid var(--tengu-switch-background);
+	border-radius: 5px;
+
+	outline: 3px solid transparent;
+
+	transition: all .3s;
+}
+input:not([type=checkbox]):not([type=radio]):focus, input:not([type=checkbox]):not([type=radio]):focus-visible, input:not([type=checkbox]):not([type=radio]):focus-within,
+select:focus, select:focus-visible, select:focus-within,
+textarea:focus, textarea:focus-visible, textarea:focus-within{
+	outline-color: var(--tengu-primary-outline-color);
+}
+
+/* btn group */
+.btn-group{
+	display: flex;
+	flex-wrap: nowrap;
+
+	gap: 0;
+}
+.btn-group > *{
+	border-radius: 0;
+	margin: 0;
+}
+.btn-group > *:first-child{
+	border-top-left-radius   : 5px !important;
+	border-bottom-left-radius: 5px !important;
+}
+.btn-group > *:not(:last-child){
+	border-right: none !important;
+}
+.btn-group > *:last-child{
+	border-top-right-radius   : 5px !important;
+	border-bottom-right-radius: 5px !important;
+}
+.btn-group.center {
+	justify-content: center;
+}
+
+textarea {
+  height: 80vh;
+  width: 100%;
+}
+.flex {
+  display: flex;
+  gap: 1rem;
+  max-width: 600px;
+}
+.flex input {
+  width: auto !important;
 }
