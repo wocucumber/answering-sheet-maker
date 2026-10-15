@@ -1,8 +1,8 @@
 # answering-sheet-maker
 名前通り回答用紙を作成するツール。
 
-[早速使ってみる](https://wocucumber.github.io/answering-sheet-maker/)
-[書き方](torisetsu.pdf)
+- [早速使ってみる](https://wocucumber.github.io/answering-sheet-maker/)
+- [書き方](torisetsu.pdf)
 
 ## 使い方
 1. [書き方](torisetsu.pdf)通りに入力する
