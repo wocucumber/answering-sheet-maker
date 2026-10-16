@@ -1,6 +1,7 @@
 const inputArea = document.getElementById("input");
 const resultArea = document.getElementById("result");
 const canvas = document.getElementById("canvas");
+const out = document.getElementById("out");
 let fileName = null;
 let lastSVG = null;
 let lastSVGH = null;
@@ -8,7 +9,7 @@ let lastSVGW = null;
 const [w] = [500];
 
 // Convert
-document.getElementById("convert").addEventListener("click", () => {
+document.getElementById("convert").addEventListener("click", async () => {
   resultArea.innerHTML = "";
   const [result, y, x] = convert(inputArea.value);
   result.addTo('#result');
@@ -16,7 +17,11 @@ document.getElementById("convert").addEventListener("click", () => {
   lastSVGH = y;
   lastSVGW = x;
 
-  convert2canvas(lastSVG, lastSVGW, lastSVGH, canvas)
+  await convert2canvas(lastSVG, lastSVGW, lastSVGH, canvas);
+
+  out.style.width  = x+"px";
+  out.style.height = y+"px";
+  out.src = canvas2png(canvas);
 });
 
 document.getElementById("download").addEventListener("click", () => {
