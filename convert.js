@@ -1,7 +1,7 @@
 const TONARIHE = "move!!";
 const PARAM_SPLIT_REGIX = /[ー\-@＠]/
 const BORDER_COLOR = "#000";
-const FILL_COLOR = "transparent";
+const FILL_COLOR = "#fff";
 const TEXT_COLOR = "#000";
 const SIZES = Object.freeze({
   section: 40,
@@ -39,6 +39,11 @@ let secMaxX = 0;
  * @returns 
  */
 function rect(svg, location, size, text, fontSize) {
+  // console.log(location[0]+size[0] >= 2000 ? [location, size, text, fontSize]:undefined)
+  secMaxX = Math.max(location[0]+size[0], secMaxX);
+
+  const rect = svg.rect(...size).stroke(STROKE_DATA).fill(FILL_COLOR).move(...location);
+
   if (text) {
     const t = svg.text(text).fill(TEXT_COLOR).font({
       size: fontSize,
@@ -50,10 +55,7 @@ function rect(svg, location, size, text, fontSize) {
     t.move(location[0] + (size[0]/2) - (w/2), location[1] + (size[1]/2) - (h/2));
   }
 
-  // console.log(location[0]+size[0] >= 2000 ? [location, size, text, fontSize]:undefined)
-  secMaxX = Math.max(location[0]+size[0], secMaxX);
-
-  return svg.rect(...size).stroke(STROKE_DATA).fill(FILL_COLOR).move(...location);
+  return rect;
 }
 function getWidthFromParam(param) {
   if (!param) return WIDTHES.medium;
