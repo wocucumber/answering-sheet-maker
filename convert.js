@@ -41,7 +41,8 @@ let secMaxX = 0;
 function rect(svg, location, size, text, fontSize) {
   if (text) {
     const t = svg.text(text).fill(TEXT_COLOR).font({
-      size: fontSize
+      size: fontSize,
+      family: "Noto Sans JP, sans-serif",
     });
     const box = t.bbox();
     const w = box.w;
@@ -251,6 +252,38 @@ function convert(txt) {
 
 
 
+function convert2canvas(svg, w, h, canvas) {
+
+  return new Promise(resolve => {
+
+    
+    // https://qiita.com/shikuno_dev/items/bdc013c602645b07c047
+
+    const svgDataBase64 = btoa(unescape(encodeURIComponent(svg)))
+    // console.log(svgDataBase64);
+
+    const svgDataUrl = `data:image/svg+xml;charset=utf-8;base64,${svgDataBase64}`
+    // console.log(svgDataUrl);
+
+    const context = canvas.getContext('2d');
+
+    // 高解像度設定
+    canvas.width = w * 2;
+    canvas.height = h * 2;
+
+    canvas.style.width  = w + "px";
+    canvas.style.height = h + "px";
+
+    const img = new Image();
+    img.addEventListener("load", () => {
+      context.drawImage(img, 0, 0, w * 2, h * 2);
+
+      resolve();
+    });
+    img.src = svgDataUrl;
+  });
+}
+
 function convert2png(svg, w, h) {
 
   return new Promise(resolve => {
@@ -280,4 +313,7 @@ function convert2png(svg, w, h) {
     });
     img.src = svgDataUrl;
   });
+}
+function canvas2png(canvas) {
+  return canvas.toDataURL("image/png");
 }

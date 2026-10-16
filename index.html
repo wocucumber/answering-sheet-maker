@@ -6,17 +6,22 @@
   <title>問題用紙 Maker</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/3.2.8/svg.min.js" integrity="sha512-RTCg7IYcfrgDIk+0xaABXSTdDL1BJ+0QWFmIJYl5b6r4GoLT6U4lFAIZVTbCDga8fTOgIhQBQ6sY+WTrgCllqA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
   入力の方法は<a href="torisetsu.pdf">こちら</a>
   <textarea id="input" class="input"></textarea>
   <div id="convert" class="btn primary">変換</div>
   <div id="download" class="btn success">画像を保存</div>
+  <div id="download-open" class="btn success">画像を新しいページで開く</div>
   <div class="flex">
     <input type="file" accept=".txt" id="load">
     <div id="save" class="btn warning">ファイルにデータを保存</div>
   </div>
-  <div id="result"></div>
+  <div id="result" style="display: none;"></div>
+  <canvas id="canvas"></canvas>
   <script src="index.js"></script>
   <script src="convert.js"></script>
 </body>

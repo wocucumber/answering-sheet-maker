@@ -1,5 +1,6 @@
 const inputArea = document.getElementById("input");
 const resultArea = document.getElementById("result");
+const canvas = document.getElementById("canvas");
 let fileName = null;
 let lastSVG = null;
 let lastSVGH = null;
@@ -14,11 +15,29 @@ document.getElementById("convert").addEventListener("click", () => {
   lastSVG = result.svg();
   lastSVGH = y;
   lastSVGW = x;
+
+  convert2canvas(lastSVG, lastSVGW, lastSVGH, canvas)
 });
 
 document.getElementById("download").addEventListener("click", () => {
-  if (lastSVG)
-    convert2png(lastSVG, lastSVGW, lastSVGH).then(url => window.open(url));
+  if (lastSVG) {
+    const url = canvas2png(canvas);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = (fileName || "解答用紙")+".png";
+
+    a.click();
+  }
+});
+
+document.getElementById("download-open").addEventListener("click", () => {
+  if (lastSVG) {
+    const url = canvas2png(canvas);
+
+    if (!window.open(url, "_blank"))
+      location.href = url;
+  }
 });
 
 

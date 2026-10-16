@@ -1,3 +1,10 @@
+body {
+  font-family: "Noto Sans JP", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
 :root{
 	/* Primary */
 	--tengu-primary-color		: #1975ff;
